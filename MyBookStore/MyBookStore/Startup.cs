@@ -26,6 +26,31 @@ namespace MyBookStore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from first custom middleware");
+
+                await next();
+
+                await context.Response.WriteAsync("Hello from first-second custom middleware");
+            });
+
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from second-first custom middleware");
+
+                await next();
+
+                await context.Response.WriteAsync("Hello from second-second custom middleware");
+            });
+
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from third-first custom middleware");
+
+                await next();
+            });
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -35,6 +60,25 @@ namespace MyBookStore
                     await context.Response.WriteAsync("Hello World!");
                 });
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("/dhaval", async context =>
+                {
+                    await context.Response.WriteAsync("Hello Dhaval!");
+                });
+            });
+
+            //We can also use Map insted of MapGet 
+            //difference is that MapGet can only handle get requests while Map can handle all type of requests
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.Map("/dhaval", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello Vikas!");
+            //    });
+            //});
         }
     }
 }
