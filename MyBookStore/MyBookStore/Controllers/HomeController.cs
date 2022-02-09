@@ -11,9 +11,20 @@ namespace MyBookStore.Controllers
         public ViewResult Index()
         {
             return View();
+            //return View("AboutUs");
+            //Full Path
+            //return View("TempView/Index.cshtml");
+            //return View("~/TempView/Index.cshtml");
+            //Relative Path
+            //return View("../../TempView/Index");
         }
 
         public ViewResult AboutUs()
+        {
+            return View();
+        }
+
+        public ViewResult ContactUs()
         {
             return View();
         }
