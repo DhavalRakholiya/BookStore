@@ -13,53 +13,18 @@
 <body>
     <h1>Welcome To Book Store</h1>
 
-    @*If - Else*@
-    @{
-        int a = 10;
-    }
-    @if (a == 5)
+    @for (int i = 0; i < 10; i++)
     {
-        a++;
-        <h1>Hello from If Block and value = @a</h1>
+        <h1>for loop index is: @i</h1>
     }
-    else if (a == 10)
-    {
-        <h1>Hello from Else If Block</h1>
-    }
-    else
-    {
-        <h1>Hello from Else Block</h1>
-    }
-
-    @*//Ternary*@
 
     @{
-        int b = 10;
-        int c = 0;
+        var list = new List<int>() { 1, 2, 3, 4, 5 };
     }
 
-    <h1>Ternary : @(b == 1 ? c = 10 : c = 5)</h1>
-
-    <h1>Value of C is : @c</h1>
-
-    @*Switch-Case*@
-
-    @{
-        int d = 5;
-    }
-    @switch (d)
+    @foreach (var item in list)
     {
-        case 1:<h1>Case 1 is true</h1>
-            break;
-        case 2: <h1>Case 2 is true</h1>
-            break;
-        case 3: <h1>Case 3 is true</h1>
-            break;
-        case 4: <h1>Case 4 is true</h1>
-            break;
-        default: <h1>Default Case is true</h1>
-            break;
-
+        <h1>foreach loop index is: @item</h1>
     }
 </body>
 </html>
