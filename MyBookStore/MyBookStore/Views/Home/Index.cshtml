@@ -9,22 +9,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/css/Site.css" rel="stylesheet" />
 </head>
 <body>
+    <img src="~/images/Logo.png" class="logo" alt="logo"/>
+
     <h1>Welcome To Book Store</h1>
-
-    @for (int i = 0; i < 10; i++)
-    {
-        <h1>for loop index is: @i</h1>
-    }
-
-    @{
-        var list = new List<int>() { 1, 2, 3, 4, 5 };
-    }
-
-    @foreach (var item in list)
-    {
-        <h1>foreach loop index is: @item</h1>
-    }
 </body>
 </html>
