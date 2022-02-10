@@ -4,6 +4,23 @@
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Welcome to Book Store</h1>
+        <environment names="Development">
+            <h3>Development using names attribute</h3>
+        </environment>
+        @*you can use 'names' or 'include' both are used for same purpose*@
+        <environment include="Development">
+            <h3>Development using include attribute</h3>
+        </environment>
+
+        <environment names="Production, Staging">
+            <h3>Production using names or include attribute</h3>
+        </environment>
+        @*Alternative for above production and staging*@
+        <environment exclude="Development">
+            <h3>Production using exclude attribute</h3>
+        </environment>
+
+
         <p class="lead text-muted">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
