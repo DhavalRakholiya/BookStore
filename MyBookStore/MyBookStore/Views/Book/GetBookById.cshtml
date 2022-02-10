@@ -1,4 +1,7 @@
-﻿@model BookModel
+﻿@{
+    ViewData["title"] = "Details of " + Model.Title + " book";
+}
+@model BookModel
 
 <div class="container">
     <h3 class="display-4">Book details</h3>

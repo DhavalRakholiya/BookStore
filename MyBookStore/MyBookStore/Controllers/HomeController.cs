@@ -12,16 +12,11 @@ namespace MyBookStore.Controllers
     {
         public ViewResult Index()
         {
-            ViewBag.Title = 123;
+            ViewData["prop1"] = "Vikas";
 
-            dynamic data = new ExpandoObject();
-            data.id = 1;
-            data.name = "Bhaumik";
-            ViewBag.Obj = data;
+            ViewData["prop2"] = new BookModel() { Id = 1, Author = "Dhaval Rakholiya" };
 
-            ViewBag.Type = new BookModel() { Id = 1, Author = "Dhaval" };
             return View();
-
             
             //return View("AboutUs");
             //Full Path
