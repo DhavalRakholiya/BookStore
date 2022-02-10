@@ -10,12 +10,16 @@ namespace MyBookStore.Controllers
 {
     public class HomeController : Controller
     {
+        [ViewData]
+        public string prop1 { get; set; }
+
+        [ViewData]
+        public BookModel book { get; set; }
+
         public ViewResult Index()
         {
-            ViewData["prop1"] = "Vikas";
-
-            ViewData["prop2"] = new BookModel() { Id = 1, Author = "Dhaval Rakholiya" };
-
+            prop1 = "Dhaval Rakholiya";
+            book = new BookModel() { Id = 1, Author = "Vikas Patel" };
             return View();
             
             //return View("AboutUs");
