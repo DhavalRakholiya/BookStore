@@ -16,7 +16,6 @@ namespace MyBookStore.Controllers
             _bookRepository = new BookRepository();
         }
 
-        [Route("All-Books", Name = "allbooksroute")]
         public ViewResult GetAllBooks()
         {
             var data =  _bookRepository.GetAllBooks();
@@ -24,7 +23,7 @@ namespace MyBookStore.Controllers
             return View(data);
         }
 
-        public ViewResult GetBookById(int id, string nameOfBook)
+        public ViewResult GetBookById(int id)
         {
             var data = _bookRepository.GetBookById(id);
             return View(data);
