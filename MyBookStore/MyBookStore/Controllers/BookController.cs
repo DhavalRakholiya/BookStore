@@ -22,9 +22,10 @@ namespace MyBookStore.Controllers
             return View(data);
         }
 
-        public BookModel GetBookById(int id)
+        public ViewResult GetBookById(int id)
         {
-            return _bookRepository.GetBookById(id);
+            var data = _bookRepository.GetBookById(id);
+            return View(data);
         }
 
         public List<BookModel> SearchBooks(string bookName, string authorName)
