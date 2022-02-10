@@ -19,7 +19,7 @@ namespace MyBookStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BookStoreContext>(
-                options => options.UseSqlServer("Server=.;Database=BookStore;Integrated Security=True;"));
+                options => options.UseSqlServer("Server=(localdb)\\MSSqlLocalDb;Database=BookStore;Integrated Security=True;"));
 
             services.AddControllersWithViews();
 #if DEBUG
