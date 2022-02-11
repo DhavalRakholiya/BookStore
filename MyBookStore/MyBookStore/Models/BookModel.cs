@@ -10,6 +10,7 @@ namespace MyBookStore.Models
     {
 
         [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string MyField { get; set; }
 
         public int Id { get; set; }
