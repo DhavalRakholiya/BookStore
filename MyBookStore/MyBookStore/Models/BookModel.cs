@@ -22,6 +22,7 @@ namespace MyBookStore.Models
 
         public string Category { get; set; }
 
+        [Required(ErrorMessage = "Please select Language of your book")]
         public string Language { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Total Pages")]

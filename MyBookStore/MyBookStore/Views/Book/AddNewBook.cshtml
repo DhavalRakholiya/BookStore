@@ -23,6 +23,18 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="Language"></label>
+        <select asp-for="Language" class="form-control">
+            <option value="">Please Select Language</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Gujarati">Gujarati</option>
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+        </select>
+        <span class="text-danger" asp-validation-for="Language"></span>
+    </div>
+
+    <div class="form-group">
         <label asp-for="Author"></label>
         <input asp-for="Author" class="form-control" />
         <span class="text-danger" asp-validation-for="Author"></span>
