@@ -16,9 +16,9 @@ namespace MyBookStore.Controllers
             _bookRepository = bookRepository;
         }
 
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
-            var data =  _bookRepository.GetAllBooks();
+            var data = await _bookRepository.GetAllBooks();
 
             return View(data);
         }
@@ -42,9 +42,9 @@ namespace MyBookStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNewBook(BookModel bookModel)
+        public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
-            int id =  _bookRepository.AddNewBook(bookModel);
+            int id = await  _bookRepository.AddNewBook(bookModel);
             if(id > 0)
             {
                 return RedirectToAction("AddNewBook", new { isSuccess = true , bookId = id });

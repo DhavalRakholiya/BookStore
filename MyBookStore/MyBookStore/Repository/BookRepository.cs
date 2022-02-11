@@ -1,4 +1,5 @@
-﻿using MyBookStore.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBookStore.Data;
 using MyBookStore.Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace MyBookStore.Repository
             _context = context;
         }
 
-        public int AddNewBook(BookModel model)
+        public async Task<int> AddNewBook(BookModel model)
         {
             var newBook = new Books()
             {
@@ -28,15 +29,33 @@ namespace MyBookStore.Repository
                 UpdatedOn = DateTime.UtcNow
             };
 
-            _context.Books.Add(newBook);
-            _context.SaveChanges();
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
 
             return newBook.Id;
         }
 
-        public List<BookModel> GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
-            return DataSource();
+            var books = new List<BookModel>();
+            var allBooks = await _context.Books.ToListAsync();
+            if (allBooks?.Any() == true)
+            {
+                foreach (var book in allBooks)
+                {
+                    books.Add(new BookModel()
+                    {
+                        Author = book.Author,
+                        Category = book.Category,
+                        Description = book.Description,
+                        Id = book.Id,
+                        Language = book.Language,
+                        Title = book.Title,
+                        TotalPages = book.TotalPages
+                    });
+                }
+            }
+            return books;
         }
 
         public BookModel GetBookById(int id)
