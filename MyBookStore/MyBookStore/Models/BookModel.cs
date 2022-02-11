@@ -8,11 +8,6 @@ namespace MyBookStore.Models
 {
     public class BookModel
     {
-
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
-        public string MyField { get; set; }
-
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Please Enter the Title of your book")]

@@ -52,9 +52,6 @@ namespace MyBookStore.Controllers
                     return RedirectToAction("AddNewBook", new { isSuccess = true, bookId = id });
                 }
             }
-
-            ModelState.AddModelError("", "This is Custom Error message from Model");
-            ModelState.AddModelError("", "This is 2nd Custom Error message from Model");
             return View();
         }
     }
