@@ -37,7 +37,14 @@ namespace MyBookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
-            ViewBag.languageList = new SelectList(GetLanguage(), "Id", "Text", "2");
+            //ViewBag.languageList = new SelectList(GetLanguage(), "Id", "Text", "2");
+            ViewBag.languageList = new List<SelectListItem>()
+            {
+                new SelectListItem(){Text = "Hindi", Value = "1" },
+                new SelectListItem(){Text = "English", Value = "2", Disabled = true },
+                new SelectListItem(){Text = "Dutch", Value = "3", Selected = true },
+                new SelectListItem(){Text = "Tamil", Value = "4", Disabled = true },
+            };
             ViewBag.isSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
