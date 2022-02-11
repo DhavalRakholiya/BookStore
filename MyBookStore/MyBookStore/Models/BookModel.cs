@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using MyBookStore.Enums;
 
 namespace MyBookStore.Models
 {
@@ -29,7 +30,7 @@ namespace MyBookStore.Models
         [Display(Name = "Total Pages Of Book")]
         public int? TotalPages { get; set; }
 
-        [Required(ErrorMessage = "Please select Languages of your book")]
-        public List<string> MultiLanguage { get; set; }
+        [Required(ErrorMessage = "Please choose the language of your book")]
+        public LanguageEnum LanguageEnum { get; set; }
     }
 }

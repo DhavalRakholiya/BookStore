@@ -38,15 +38,15 @@ namespace MyBookStore.Controllers
         public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
             //ViewBag.languageList = new SelectList(GetLanguage(), "Id", "Text", "2");
-            ViewBag.languageList = new List<SelectListItem>()
-            {
-                new SelectListItem(){Text = "Hindi", Value = "1"},
-                new SelectListItem(){Text = "English", Value = "2"},
-                new SelectListItem(){Text = "Dutch", Value = "3"},
-                new SelectListItem(){Text = "Tamil", Value = "4"},
-                new SelectListItem(){Text = "Urdu", Value = "5" },
-                new SelectListItem(){Text = "Chinese", Value = "6"}
-            };
+            //ViewBag.languageList = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Text = "Hindi", Value = "1"},
+            //    new SelectListItem(){Text = "English", Value = "2"},
+            //    new SelectListItem(){Text = "Dutch", Value = "3"},
+            //    new SelectListItem(){Text = "Tamil", Value = "4"},
+            //    new SelectListItem(){Text = "Urdu", Value = "5" },
+            //    new SelectListItem(){Text = "Chinese", Value = "6"}
+            //};
             ViewBag.isSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -63,15 +63,15 @@ namespace MyBookStore.Controllers
                     return RedirectToAction("AddNewBook", new { isSuccess = true, bookId = id });
                 }
             }
-            ViewBag.languageList = new List<SelectListItem>()
-            {
-                new SelectListItem(){Text = "Hindi", Value = "1"},
-                new SelectListItem(){Text = "English", Value = "2"},
-                new SelectListItem(){Text = "Dutch", Value = "3"},
-                new SelectListItem(){Text = "Tamil", Value = "4"},
-                new SelectListItem(){Text = "Urdu", Value = "5" },
-                new SelectListItem(){Text = "Chinese", Value = "6"}
-            };
+            //ViewBag.languageList = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Text = "Hindi", Value = "1"},
+            //    new SelectListItem(){Text = "English", Value = "2"},
+            //    new SelectListItem(){Text = "Dutch", Value = "3"},
+            //    new SelectListItem(){Text = "Tamil", Value = "4"},
+            //    new SelectListItem(){Text = "Urdu", Value = "5" },
+            //    new SelectListItem(){Text = "Chinese", Value = "6"}
+            //};
             return View();
         }
 
