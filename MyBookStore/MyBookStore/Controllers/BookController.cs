@@ -36,6 +36,7 @@ namespace MyBookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
+            ViewBag.languageList = new List<string>() { "Hindi", "English", "Gujarati", "Spanish" };
             ViewBag.isSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -52,6 +53,7 @@ namespace MyBookStore.Controllers
                     return RedirectToAction("AddNewBook", new { isSuccess = true, bookId = id });
                 }
             }
+            ViewBag.languageList = new List<string>() { "Hindi", "English", "Gujarati", "Spanish" };
             return View();
         }
     }
