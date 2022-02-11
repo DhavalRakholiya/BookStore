@@ -28,5 +28,8 @@ namespace MyBookStore.Models
         [Required(ErrorMessage = "Please Enter the Total Pages")]
         [Display(Name = "Total Pages Of Book")]
         public int? TotalPages { get; set; }
+
+        [Required(ErrorMessage = "Please select Languages of your book")]
+        public List<string> MultiLanguage { get; set; }
     }
 }
