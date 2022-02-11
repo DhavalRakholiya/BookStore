@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBookStore.Models;
 using MyBookStore.Repository;
 using System;
@@ -36,7 +37,7 @@ namespace MyBookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
-            ViewBag.languageList = new List<string>() { "Hindi", "English", "Gujarati", "Spanish" };
+            ViewBag.languageList = new SelectList(GetLanguage(), "Id", "Text", "2");
             ViewBag.isSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -53,8 +54,19 @@ namespace MyBookStore.Controllers
                     return RedirectToAction("AddNewBook", new { isSuccess = true, bookId = id });
                 }
             }
-            ViewBag.languageList = new List<string>() { "Hindi", "English", "Gujarati", "Spanish" };
+            ViewBag.languageList = new SelectList(GetLanguage(), "Id", "Text");
             return View();
+        }
+
+
+        public List<LanguageModel> GetLanguage()
+        {
+            return new List<LanguageModel>()
+            {
+                 new LanguageModel(){ Id = 1, Text = "Gujarati"},
+                 new LanguageModel(){ Id = 2, Text = "Hindi"},
+                 new LanguageModel(){ Id = 3, Text = "English"}
+            };
         }
     }
 }
