@@ -58,9 +58,27 @@ namespace MyBookStore.Repository
             return books;
         }
 
-        public BookModel GetBookById(int id)
+        public async Task<BookModel> GetBookById(int id)
         {
-            return DataSource().FirstOrDefault(x => x.Id == id);
+            //var book = await _context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();
+            //Or
+            var book = await _context.Books.FindAsync(id);
+            if (book != null)
+            {
+                var bookDetails = new BookModel() {
+                    Author = book.Author,
+                    Category = book.Category,
+                    Description = book.Description,
+                    Id = book.Id,
+                    Language = book.Language,
+                    Title = book.Title,
+                    TotalPages = book.TotalPages
+                };
+
+                return bookDetails;
+            }
+
+            return null;
         }
 
         public List<BookModel> SearchBook(string title, string authorName)

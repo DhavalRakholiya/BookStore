@@ -23,9 +23,9 @@ namespace MyBookStore.Controllers
             return View(data);
         }
 
-        public ViewResult GetBookById(int id)
+        public async Task<ViewResult> GetBookById(int id)
         {
-            var data = _bookRepository.GetBookById(id);
+            var data = await _bookRepository.GetBookById(id);
             return View(data);
         }
 
