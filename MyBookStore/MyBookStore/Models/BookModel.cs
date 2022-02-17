@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using MyBookStore.Enums;
+using MyBookStore.Helpers;
 
 namespace MyBookStore.Models
 {
@@ -11,8 +12,9 @@ namespace MyBookStore.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Please Enter the Title of your book")]
-        [StringLength(100, MinimumLength = 5, ErrorMessage = "Title length must be between 5 to 100 characters")]
+        //[Required(ErrorMessage ="Please Enter the Title of your book")]
+        //[StringLength(100, MinimumLength = 5, ErrorMessage = "Title length must be between 5 to 100 characters")]
+        [MyCustomValidation("Azure", ErrorMessage = "This is custom error message")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Author name")]
