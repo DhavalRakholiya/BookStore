@@ -14,8 +14,6 @@ namespace MyBookStore.Helpers
         {
             output.TagName = "h3";
             output.Attributes.RemoveAll("Big");
-            output.PreContent.SetHtmlContent("<p>Pre Content</p>");
-            output.PostContent.SetHtmlContent("<p>Post Content</p>");
             output.Attributes.SetAttribute("class", "h3");
         }
     }

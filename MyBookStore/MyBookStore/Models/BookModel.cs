@@ -12,9 +12,8 @@ namespace MyBookStore.Models
     {
         public int Id { get; set; }
 
-        //[Required(ErrorMessage ="Please Enter the Title of your book")]
-        //[StringLength(100, MinimumLength = 5, ErrorMessage = "Title length must be between 5 to 100 characters")]
-        [MyCustomValidation("Azure", ErrorMessage = "This is custom error message")]
+        [Required(ErrorMessage = "Please Enter the Title of your book")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Title length must be between 5 to 100 characters")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Author name")]

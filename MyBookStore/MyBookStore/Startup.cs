@@ -25,6 +25,12 @@ namespace MyBookStore
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            //Uncomment this code to disable client side validations and add after AddRazorRuntimeCompilation text in above sentence.
+            //    .AddViewOptions(option =>
+            //{
+            //    option.HtmlHelperOptions.ClientValidationEnabled = false;
+            //});
 #endif
             services.AddScoped<BookRepository, BookRepository>();
 
