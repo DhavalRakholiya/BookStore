@@ -28,7 +28,8 @@ namespace MyBookStore.Repository
                 LanguageId = model.LanguageId,
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow,
-                CoverImageUrl = model.CoverImageUrl
+                CoverImageUrl = model.CoverImageUrl,
+                BookPdfUrl = model.BookpdfUrl
             };
 
             newBook.bookGallery = new List<BookGallery>();
@@ -89,7 +90,8 @@ namespace MyBookStore.Repository
                         Id = g.Id,
                         Name = g.Name,
                         URL = g.URL
-                    }).ToList()
+                    }).ToList(),
+                    BookpdfUrl = book.BookPdfUrl
                 }).FirstOrDefaultAsync();
         }
 
