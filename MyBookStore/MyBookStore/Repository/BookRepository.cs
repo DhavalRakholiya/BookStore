@@ -31,6 +31,16 @@ namespace MyBookStore.Repository
                 CoverImageUrl = model.CoverImageUrl
             };
 
+            newBook.bookGallery = new List<BookGallery>();
+            foreach (var file in model.Gallery)
+            {
+                newBook.bookGallery.Add(new BookGallery()
+                {
+                    Name = file.Name,
+                    URL = file.URL
+                });
+            }
+
             await _context.Books.AddAsync(newBook);
             await _context.SaveChangesAsync();
 
@@ -65,17 +75,22 @@ namespace MyBookStore.Repository
         {
             return await _context.Books.Where(x => x.Id == id)
                 .Select(book => new BookModel()
+                {
+                    Author = book.Author,
+                    Category = book.Category,
+                    Description = book.Description,
+                    Id = book.Id,
+                    Language = book.Language.Name,
+                    Title = book.Title,
+                    TotalPages = book.TotalPages,
+                    CoverImageUrl = book.CoverImageUrl,
+                    Gallery = book.bookGallery.Select(g => new GalleryModel()
                     {
-                        Author = book.Author,
-                        Category = book.Category,
-                        Description = book.Description,
-                        Id = book.Id,
-                        Language = book.Language.Name,
-                        Title = book.Title,
-                        TotalPages = book.TotalPages,
-                        CoverImageUrl = book.CoverImageUrl
-                    }
-                ).FirstOrDefaultAsync();
+                        Id = g.Id,
+                        Name = g.Name,
+                        URL = g.URL
+                    }).ToList()
+                }).FirstOrDefaultAsync();
         }
 
         public List<BookModel> SearchBook(string title, string authorName)
