@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using MyBookStore.Enums;
 using MyBookStore.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace MyBookStore.Models
 {
@@ -32,5 +33,11 @@ namespace MyBookStore.Models
         public int? TotalPages { get; set; }
 
         public string Language { get; set; }
+
+        [Required(ErrorMessage = "Please Choose the cover photo of your book")]
+        [Display(Name = "Cover photo of your book")]
+        public IFormFile CoverPhoto { get; set; }
+
+        public string CoverImageUrl { get; set; }
     }
 }

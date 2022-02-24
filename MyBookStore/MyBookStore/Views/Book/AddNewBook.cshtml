@@ -17,12 +17,7 @@
         </div>
     }
 
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status" id="Loader" style="display:none;">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div> 
-    <form data-ajax="true" data-ajax-complete="completeForm" data-ajax-success="successForm" data-ajax-failure="failForm" data-ajax-loading="#Loader" method="post" asp-action="AddNewBook" asp-controller="Book">
+    <form method="post" enctype="multipart/form-data" asp-action="AddNewBook" asp-controller="Book">
         <div class="form-group">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control" />
@@ -54,28 +49,18 @@
             <input asp-for="TotalPages" class="form-control" />
             <span class="text-danger" asp-validation-for="TotalPages"></span>
         </div>
+
+        <div class="form-group">
+            <label asp-for="CoverPhoto"></label>
+            <div class="custom-file">
+                <input asp-for="CoverPhoto" class="custom-file-input" id="customFile"/>
+                <label class="custom-file-label" for="customFile"></label>
+            </div>
+            <span class="text-danger" asp-validation-for="CoverPhoto"></span>
+        </div>
+
         <div class="form-group">
             <input type="submit" value="Add book" class="btn btn-primary" />
         </div>
     </form>
 </div>
-
-@section scripts
-{
-    <script>
-        function completeForm() {
-            alert("Form Completed");
-            console.log("Form Completed");
-        }
-
-        function successForm() {
-            alert("Form Succeded");
-            console.log("Form Succeded");
-        }
-
-        function failForm() {
-            alert("Form Failed");
-            console.log("Form Failed");
-        }
-    </script>
-}
