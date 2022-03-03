@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyBookStore.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,16 @@ namespace MyBookStore.Components
 {
     public class TopBooksViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()
+        private readonly BookRepository _bookRepository;
+
+        public TopBooksViewComponent(BookRepository bookRepository)
         {
-            return View();
+            _bookRepository = bookRepository;
+        }
+        public async Task<IViewComponentResult> InvokeAsync(int count)
+        {
+            var books = await _bookRepository.GetTopBooksAsync(count);
+            return View(books);
         }
     }
 }
